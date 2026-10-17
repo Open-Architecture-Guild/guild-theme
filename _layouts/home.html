@@ -71,18 +71,8 @@ layout: default
 <div class="container">
 <h2 id="projekte-titel">{{ h.projects.title }}</h2>
 <p class="lede">{{ h.projects.lede }}</p>
-<div class="grid">
-{% for p in h.projects.items %}
-<article class="card">
-<div class="card-head"><h3>{{ p.title }}</h3><span class="badge badge-{{ p.status }}">{{ p.label }}</span></div>
-<p>{{ p.text }}</p>
-<p class="meta">{{ h.projects.repo_label }}: {{ p.repo }}<br>{{ h.projects.license_label }}: {{ p.license }}</p>
-{% if p.url %}
-<a class="card-link" href="{% if p.url contains ':' %}{{ p.url }}{% else %}{{ p.url | relative_url }}{% endif %}">{{ p.link_title }}</a>
-{% endif %}
-</article>
-{% endfor %}
-</div>
+{% include project-cards.html %}
+{% if h.projects.all_url %}<p class="more"><a href="{{ h.projects.all_url | relative_url }}">{{ h.projects.all_title }}</a></p>{% endif %}
 </div>
 </section>
 
@@ -138,6 +128,7 @@ layout: default
 </li>
 {% endfor %}
 </ul>
+{% if h.decisions.all_url %}<p class="more"><a href="{{ h.decisions.all_url | relative_url }}">{{ h.decisions.all_title }}</a></p>{% endif %}
 </div>
 </section>
 
