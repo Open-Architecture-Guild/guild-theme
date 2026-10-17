@@ -1,6 +1,23 @@
 /* Open Architecture Guild – Stylesheet
    Keine externen Ressourcen. Farben und Maße stehen als Variablen oben. */
 
+/* Schriften werden selbst ausgeliefert (SIL Open Font License 1.1, Lizenztexte in assets/fonts/). */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-next-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url("../fonts/newsreader-latin-600-normal.woff2") format("woff2");
+}
+
 :root {
   --bg: #f5f6f3;
   --surface: #ffffff;
@@ -565,9 +582,7 @@ button:focus-visible {
   color: var(--ink-2);
 }
 .prose table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
+  width: 100%;
   border-collapse: collapse;
   font-size: 0.9375rem;
 }
@@ -576,8 +591,14 @@ button:focus-visible {
   border: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .prose th { background: var(--tint); }
+@media (max-width: 480px) {
+  .prose table { font-size: 0.875rem; }
+  .prose th, .prose td { padding: 6px 6px; }
+}
 .prose .callout {
   margin-block: 24px;
   padding: 16px 20px;
