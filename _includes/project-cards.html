@@ -1,0 +1,13 @@
+<div class="grid">
+{% assign pr = site.data.home.projects %}
+{% for p in pr.items %}
+<article class="card">
+<div class="card-head"><h3>{{ p.title }}</h3><span class="badge badge-{{ p.status }}">{{ p.label }}</span></div>
+<p>{{ p.text }}</p>
+<p class="meta">{{ pr.repo_label }}: {{ p.repo }}<br>{{ pr.license_label }}: {{ p.license }}</p>
+{% if p.url %}
+<a class="card-link" href="{% if p.url contains ':' %}{{ p.url }}{% else %}{{ p.url | relative_url }}{% endif %}">{{ p.link_title }}</a>
+{% endif %}
+</article>
+{% endfor %}
+</div>

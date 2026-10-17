@@ -536,7 +536,72 @@ button:focus-visible {
   font-weight: 600;
   line-height: 1.15;
 }
-.prose h2 { margin-top: 32px; font-size: 1.25rem; }
+.prose h2 { margin-top: 40px; font-size: 1.375rem; line-height: 1.25; }
+.prose h3 { margin-top: 28px; font-size: 1.125rem; line-height: 1.3; }
+.prose .lede { font-size: 1.125rem; color: var(--ink-2); }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li { margin-block: 6px; }
+.prose a { overflow-wrap: anywhere; }
+.prose hr { margin-block: 32px; border: 0; border-top: 1px solid var(--line); }
+.prose code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--tint);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+.prose pre {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow-x: auto;
+}
+.prose pre code { padding: 0; background: none; overflow-wrap: normal; }
+.prose blockquote {
+  margin-inline: 0;
+  padding: 4px 0 4px 16px;
+  border-left: 4px solid var(--accent);
+  color: var(--ink-2);
+}
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.prose th, .prose td {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th { background: var(--tint); }
+.prose .callout {
+  margin-block: 24px;
+  padding: 16px 20px;
+  border-radius: 8px;
+}
+.prose .callout > :first-child { margin-top: 0; }
+.prose .callout > :last-child { margin-bottom: 0; }
+.prose .callout-warn { background: var(--warn-bg); color: var(--warn-ink); }
+.page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.page-meta div { display: flex; gap: 6px; }
+.page-meta dt { font-weight: 700; }
+.page-meta dt::after { content: ":"; }
+.page-meta dd { margin: 0; }
+.prose .grid { margin-block: 24px; }
+.more { margin-top: 24px; font-weight: 700; }
 .placeholder {
   padding: 16px 20px;
   border: 1.5px dashed var(--warn-line);
