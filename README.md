@@ -1,6 +1,6 @@
 # guild-theme
 
-Jekyll-Theme der Open Architecture Guild. Enthält nur das Aussehen: Layouts, Includes, Stylesheet und Favicon. Die Texte liegen in der Seite, die das Theme nutzt (`_data/`). Keine Schriften, Skripte oder Bilder von Dritten, Hell- und Dunkelmodus automatisch.
+Jekyll-Theme der Open Architecture Guild. Enthält nur das Aussehen: Layouts, Includes, Stylesheet und Favicon. Die Texte liegen in der Seite, die das Theme nutzt (`_data/`). Schriften selbst gehostet, keine Skripte oder Bilder von Dritten, Hell- und Dunkelmodus automatisch.
 
 ## Verwenden (GitHub Pages)
 
@@ -40,6 +40,6 @@ Links in den Daten: Pfade mit `/` oder `#` am Anfang werden an `baseurl` angepas
 
 ## Anpassen
 
-Farben und Maße stehen am Anfang von `assets/css/guild.css`. Schriften: Newsreader und Atkinson Hyperlegible Next sind eingetragen, aber nicht mitgeliefert; ohne Dateien fällt die Seite auf Systemschriften zurück. Zum Selbsthosten Fontsource-Pakete (SIL OFL) nach `assets/fonts/` legen und per `@font-face` einbinden, nicht von einem CDN laden.
+Farben und Maße stehen am Anfang von `assets/css/guild.css`. Schriften: Newsreader (600) und Atkinson Hyperlegible Next (400, 700) liegen als WOFF2 in `assets/fonts/` (Fontsource, SIL OFL 1.1, Lizenztexte daneben) und werden von der eigenen Domain geladen, nicht von einem CDN. Fehlt eine Datei, fällt die Seite auf Systemschriften zurück.
 
 Lizenz: noch nicht festgelegt (ADR-0001), bis dahin wie die anderen Repos der Organisation vorläufig MIT. Eine `LICENSE`-Datei liegt noch nicht bei.
