@@ -1,0 +1,27 @@
+{% assign f = site.data.footer %}
+<footer class="site-footer">
+<div class="container">
+<div class="footer-cols">
+<div class="footer-col">
+<div class="name">{{ site.title }}</div>
+<p>{{ f.about }}</p>
+</div>
+{% for c in f.columns %}
+<nav class="footer-col" aria-label="{{ c.title }}">
+<h2>{{ c.title }}</h2>
+<ul>
+{% for l in c.links %}
+<li><a href="{% if l.url contains ':' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.title }}</a></li>
+{% endfor %}
+</ul>
+</nav>
+{% endfor %}
+</div>
+<div class="footer-bottom">
+<span>{{ f.note }}</span>
+{% if site.repository %}
+<a href="https://github.com/{{ site.repository }}/edit/main/{{ page.edit_path | default: page.path }}">{{ f.edit_title | default: 'Diese Seite auf GitHub bearbeiten' }}</a>
+{% endif %}
+</div>
+</div>
+</footer>

@@ -1,0 +1,153 @@
+---
+layout: default
+---
+{% assign h = site.data.home %}
+<main id="inhalt">
+
+<section class="hero" aria-labelledby="titel">
+<div class="container">
+<div class="hero-text">
+<p class="eyebrow">{{ h.hero.eyebrow }}</p>
+<h1 id="titel">{{ h.hero.title }}</h1>
+<p class="intro">{{ h.hero.intro }}</p>
+<div class="button-row">
+{% for b in h.hero.buttons %}
+<a class="button button-{{ b.style | default: 'primary' }}" href="{% if b.url contains ':' %}{{ b.url }}{% else %}{{ b.url | relative_url }}{% endif %}">{{ b.title }}</a>
+{% endfor %}
+</div>
+</div>
+
+<figure class="hero-visual preview" aria-label="{{ h.preview.label }}">
+<div class="preview-top">
+<span class="preview-title">{{ h.preview.title }}</span>
+<div class="fake-input" aria-hidden="true">{{ h.preview.query }}</div>
+</div>
+{% for s in h.preview.strata %}
+<div class="stratum">
+<div class="stratum-label">{{ s.name }}</div>
+<div class="tiles">
+{% for t in s.tiles %}
+<div class="tile{% if t.hit %} tile-hit{% endif %}">{{ t.title }}</div>
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+<figcaption>{{ h.preview.note }}</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="section-tight" aria-label="Einstiege">
+<div class="container">
+<div class="grid grid-wide">
+{% for e in h.entries %}
+<article class="card entry">
+<div class="icon">
+{% if e.icon == 'search' %}
+<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+{% elsif e.icon == 'book' %}
+<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg>
+{% else %}
+<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
+{% endif %}
+</div>
+<h2>{{ e.title }}</h2>
+<p>{{ e.text }}</p>
+<a class="card-link" href="{% if e.url contains ':' %}{{ e.url }}{% else %}{{ e.url | relative_url }}{% endif %}">{{ e.link_title }}</a>
+</article>
+{% endfor %}
+</div>
+</div>
+</section>
+
+<section class="status-band" id="katalog-stand" aria-labelledby="stand-titel">
+<div class="container">
+<h2 id="stand-titel">{{ h.status.title }}</h2>
+<p>{{ h.status.text }}</p>
+</div>
+</section>
+
+<section class="section" id="projekte" aria-labelledby="projekte-titel">
+<div class="container">
+<h2 id="projekte-titel">{{ h.projects.title }}</h2>
+<p class="lede">{{ h.projects.lede }}</p>
+<div class="grid">
+{% for p in h.projects.items %}
+<article class="card">
+<div class="card-head"><h3>{{ p.title }}</h3><span class="badge badge-{{ p.status }}">{{ p.label }}</span></div>
+<p>{{ p.text }}</p>
+<p class="meta">{{ h.projects.repo_label }}: {{ p.repo }}<br>{{ h.projects.license_label }}: {{ p.license }}</p>
+{% if p.url %}
+<a class="card-link" href="{% if p.url contains ':' %}{{ p.url }}{% else %}{{ p.url | relative_url }}{% endif %}">{{ p.link_title }}</a>
+{% endif %}
+</article>
+{% endfor %}
+</div>
+</div>
+</section>
+
+<section class="section band-light" aria-labelledby="prinzipien-titel">
+<div class="container">
+<h2 id="prinzipien-titel">{{ h.principles.title }}</h2>
+<div class="grid mt-32">
+{% for p in h.principles.items %}
+<div class="principle"><div class="num" aria-hidden="true">{{ forloop.index }}</div><h3>{{ p.title }}</h3><p>{{ p.text }}</p></div>
+{% endfor %}
+</div>
+</div>
+</section>
+
+<section class="section" id="mitmachen" aria-labelledby="mitmachen-titel">
+<div class="container">
+<h2 id="mitmachen-titel">{{ h.participate.title }}</h2>
+<p class="lede">{{ h.participate.lede }}</p>
+<div class="grid">
+{% for s in h.participate.steps %}
+<div class="step"><div class="time">{{ s.time }}</div><p>{{ s.text }}</p></div>
+{% endfor %}
+</div>
+<div class="button-row mt-24">
+{% for b in h.participate.buttons %}
+<a class="button button-{{ b.style | default: 'primary' }}" href="{% if b.url contains ':' %}{{ b.url }}{% else %}{{ b.url | relative_url }}{% endif %}">{{ b.title }}</a>
+{% endfor %}
+</div>
+<div class="split">
+<div class="callout">
+<h3>{{ h.participate.callout.title }}</h3>
+<p>{{ h.participate.callout.text }}</p>
+</div>
+<div class="callout callout-dark">
+<h3>{{ h.participate.pilot.title }}</h3>
+<p>{{ h.participate.pilot.text }}</p>
+<a class="button" href="{% if h.participate.pilot.url contains ':' %}{{ h.participate.pilot.url }}{% else %}{{ h.participate.pilot.url | relative_url }}{% endif %}">{{ h.participate.pilot.button }}</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-tight" id="entscheidungen" aria-labelledby="entscheidungen-titel">
+<div class="container">
+<h2 class="h2" id="entscheidungen-titel">{{ h.decisions.title }}</h2>
+<p class="lede">{{ h.decisions.lede }}</p>
+<ul class="decisions">
+{% for d in h.decisions.items %}
+<li>
+<span class="badge badge-open">{{ h.decisions.open_label }}</span>
+<div class="what"><strong>{{ d.title }}{% if d.ref %} <span class="ref">({{ d.ref }})</span>{% endif %}</strong><span>{{ d.text }}</span></div>
+<a href="{% if d.url contains ':' %}{{ d.url }}{% else %}{{ d.url | relative_url }}{% endif %}">{{ h.decisions.link_title }}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+</section>
+
+<section class="section-tight" aria-labelledby="abgrenzung-titel">
+<div class="container">
+<div class="disclaimer">
+<h2 id="abgrenzung-titel">{{ h.disclaimer.title }}</h2>
+<p>{{ h.disclaimer.text }}</p>
+</div>
+</div>
+</section>
+
+</main>

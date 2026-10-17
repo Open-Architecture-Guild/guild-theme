@@ -1,0 +1,13 @@
+<header class="site-header">
+<div class="container">
+<a class="brand" href="{{ '/' | relative_url }}">
+{% include logo.html %}
+<span class="brand-name">{{ site.title }}</span>
+</a>
+<nav class="main-nav" aria-label="{{ site.data.navigation.label | default: 'Hauptnavigation' }}">
+{% for item in site.data.navigation.main %}
+<a{% if item.button %} class="nav-button"{% endif %} href="{% if item.url contains ':' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+{% endfor %}
+</nav>
+</div>
+</header>
